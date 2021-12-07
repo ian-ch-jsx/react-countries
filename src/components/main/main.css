@@ -4,10 +4,11 @@ h2 {
 
 .main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: auto;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
 }
 
 .cards {
@@ -16,4 +17,11 @@ h2 {
   margin: auto;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.search {
+  display: flex;
+  width: 300px;
+  margin: auto;
+  justify-content: space-between;
 }
