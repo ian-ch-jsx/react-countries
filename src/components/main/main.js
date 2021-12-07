@@ -17,8 +17,8 @@ export default function Main() {
   }, []);
 
   function filterCountries() {
-    return getCountries.filter((country) => {
-      return country.name.includes(query);
+    return country.filter((c) => {
+      return c.name.includes(query);
     });
   }
   return (
@@ -32,7 +32,7 @@ export default function Main() {
         }}
       />
       <select value={continent} onChange={(e) => setContinent(e.target.value)}>
-        <option value="all">All</option>
+        <option value="">All</option>
         <option value="africa">Africa</option>
         <option value="asia">Asia</option>
         <option value="europe">Europe</option>
@@ -41,8 +41,9 @@ export default function Main() {
         <option value="antarctica">Antarctica</option>
         <option value="australia">Australia</option>
       </select>
+
       <div className="cards">
-        {country.map((item) => {
+        {filterCountries().map((item) => {
           return <CountryCard key={item.id} {...item} />;
         })}
       </div>
