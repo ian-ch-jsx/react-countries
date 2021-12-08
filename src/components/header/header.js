@@ -1,5 +1,9 @@
 import './header.css';
 
 export default function Header() {
-  return <h1>countries</h1>;
+  return (
+    <div className="header">
+      <h1>Countries of the World</h1>
+    </div>
+  );
 }

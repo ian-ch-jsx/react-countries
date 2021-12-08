@@ -25,7 +25,7 @@ export default function Main() {
     <section className="main">
       <div className="search">
         <input
-          placeholder="search Countries"
+          placeholder="search by name"
           type="text"
           value={query}
           onChange={(e) => {
@@ -33,14 +33,14 @@ export default function Main() {
           }}
         />
         <select value={continent} onChange={(e) => setContinent(e.target.value)}>
-          <option value="[]">All</option>
+          <option value="All">All</option>
           <option value="Africa">Africa</option>
           <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
           <option value="North America">North America</option>
           <option value="South America">South America</option>
           <option value="Antarctica">Antarctica</option>
-          <option value="Australia">Australia</option>
+          <option value="Oceania">Oceania</option>
         </select>
       </div>
       <div className="cards">
