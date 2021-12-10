@@ -18,9 +18,12 @@ export default function Main() {
 
   function filterCountries() {
     return country.filter((c) => {
-      return c.name.includes(query) && (c.continent === continent || continent === 'All');
+      return (
+        c.name.toLowerCase().includes(query) && (c.continent === continent || continent === 'All')
+      );
     });
   }
+
   return (
     <section className="main">
       <div className="search">
@@ -29,7 +32,7 @@ export default function Main() {
           type="text"
           value={query}
           onChange={(e) => {
-            setQuery(e.target.value);
+            setQuery(e.target.value.toLowerCase());
           }}
         />
         <select value={continent} onChange={(e) => setContinent(e.target.value)}>
