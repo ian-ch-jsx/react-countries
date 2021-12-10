@@ -4,17 +4,27 @@ import CountryCard from '../countryCard/countryCard';
 import { getCountries } from '../../services/countries';
 
 export default function Main() {
+  const [loading, setLoading] = useState(true);
   const [country, setCountry] = useState([]);
   const [query, setQuery] = useState('');
   const [continent, setContinent] = useState('All');
 
   useEffect(() => {
+    let timer;
     const fetchData = async () => {
       const data = await getCountries();
       setCountry(data);
+      timer = setTimeout(() => {
+        setLoading(false);
+      }, 600);
     };
-    fetchData();
-  }, []);
+    if (loading) {
+      fetchData();
+    }
+    return () => {
+      clearInterval(timer);
+    };
+  }, [loading]);
 
   function filterCountries() {
     return country.filter((c) => {
@@ -47,9 +57,11 @@ export default function Main() {
         </select>
       </div>
       <div className="cards">
-        {filterCountries().map((item) => {
-          return <CountryCard key={item.id} {...item} />;
-        })}
+        {loading && <span className="loader"></span>}
+        {!loading &&
+          filterCountries().map((item) => {
+            return <CountryCard key={item.id} {...item} />;
+          })}
       </div>
     </section>
   );
